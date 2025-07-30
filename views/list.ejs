@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Todo List</h1>
+
+    <form action="/" method="POST">
+        <input type="text" name="ele1" placeholder="Enter task" autocomplete="off" autofocus>
+        <button type="submit">Add</button>
+    </form>
+
+    <ul>
+        <% ejes.forEach(function(task, index) { %>
+            <li>
+                <form action="/toggle" method="POST">
+                    <input type="hidden" name="index" value="<%= index %>">
+                    <input type="checkbox" id="task-<%= index %>" name="done" onchange="this.form.submit()" <%= task.done ? 'checked' : '' %> >
+                    <label for="task-<%= index %>" class="<%= task.done ? 'completed' : '' %>"><%= task.text %></label>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>
