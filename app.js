@@ -6,7 +6,7 @@ app.set("view engine", "ejs");
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
-let items = []; // Each item will be { text: "task", done: false }
+let items = []; 
 
 app.get("/", function (req, res) {
     res.render("list", { ejes: items }); 
@@ -21,7 +21,7 @@ app.post("/", function (req, res) {
     res.redirect("/");
 });
 
-// Toggle checkbox status
+
 app.post("/toggle", function (req, res) {
     const index = req.body.index;
     if (items[index]) {
